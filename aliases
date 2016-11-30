@@ -1,0 +1,106 @@
+# alias config
+
+################
+#### SYSTEM ####
+################
+
+## Use a long listing format ##
+alias ll='ls -la'
+
+## Show hidden files ##
+alias l.='ls -d .* --color=auto'
+
+# System update
+alias update="yaourt -Syua --noconfirm"
+alias upcheck="yaourt -Syua"
+
+# reboot / halt / poweroff
+alias reboot='sudo /sbin/reboot'
+alias poweroff='sudo /sbin/poweroff'
+alias halt='sudo /sbin/halt'
+alias shutdown='sudo /sbin/shutdown'
+
+# check battery stats
+alias batcheck="upower -i $(upower -e | grep 'BAT') | grep -E 'state|to\ full|percentage|capacity'"
+
+#############
+#### GIT ####
+#############
+
+alias gs="git status";
+alias ga="git add .";
+alias gc="git commit -m";
+alias gpull="git pull";
+alias gpush="git pull; git push";
+
+alias gco="git checkout";
+
+#alias gcob="git checkout -b"
+
+gcob () {
+    if [ -z $2]; 
+        then
+            git checkout -b $1
+        else
+            git checkout -b $1 origin/$2
+    fi
+}
+
+alias gffs="git flow feature start";
+alias gf3="git flow feature finish";
+alias gffp="git flow feature publish";
+
+################
+#### DOCKER ####
+################
+
+# List container
+alias dps="docker ps"
+
+# List all container
+alias dpa="docker ps -a"
+
+# List images
+alias di="docker images"
+
+# Get container IP
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+
+# Execute interactive container
+alias dex="docker exec -it"
+
+# Enter the container on bash
+denter() {
+    docker exec -it $1 bash;
+}
+
+# Enter the container and start it if it is not running
+din() {
+    docker start $1; docker exec -it $1 bash
+}
+
+# Stop all container
+dsa() {
+    docker stop $(docker ps -a -q);
+}
+
+# Stop one container
+dstop() {
+    docker stop $1;
+}
+
+# Start one container
+dstart() {
+    docker start $1;
+}
+
+# Stop and remove a container
+dkill() {
+    docker stop $1; docker rm $1;
+}
+
+# Remove container
+alias drm="docker rm"
+
+# Remove image
+alias drmi="docker rmi"
