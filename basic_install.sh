@@ -69,28 +69,37 @@ install_apps () {
   yaourt -S --noconfirm \
       networkmanager \
       network-manager-applet \
-      atom \
+      visual-studio-code \
+      intellij-idea-ultimate-edition \
       solaar \
-      terminix \
+      terminator \
       git \
       vim \
       zsh \
-      redshift \
       firefox \
-      firefox-i18n-de \
+      thunderbird \
       libreoffice-still \
-      calibre \
       gimp \
-      rapid-photo-downloader \
       docker \
       mc \
-      gst-plugins-ugly \
       adobe-source-code-pro-fonts \
+      ttf-mononoki \
       gtk-theme-arc-git \
-      paper-icon-theme-git \
+      papirus-icon-theme-git \
       gnome-shell-extension-installer \
       openssh \
-      wine
+      wine \
+      smartgit \
+      rocketchat-client \
+      insomnia \
+      nuvolaplayer \
+      nuvola-app-spotify \
+      tigervnc \
+      flashplugin \
+      nodejs \
+      npm \
+      keepassxc \
+      gpaste
 
   execution
 }
@@ -137,10 +146,11 @@ set_theming () {
   gconftool-2 --set /apps/metacity/general/button_layout --type string "close,maximize,minimize:"
   gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'alternate-tab@gnome-shell-extensions.gcampax.github.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']"
   gsettings set org.gnome.desktop.interface gtk-theme 'Arc'
-  gsettings set org.gnome.desktop.interface icon-theme 'Paper'
+  gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
   gsettings set org.gnome.desktop.wm.preferences theme 'Arc-Dark'
   gsettings set org.gnome.desktop.interface clock-show-date true
   gsettings set org.gnome.desktop.interface monospace-font-name 'Source Code Pro Semi-Bold 11'
+  gsettings set org.gnome.desktop.interface font-name 'mononoki 11'
 
   cp $BASEDIR/vimrc ~/.vimrc
 
