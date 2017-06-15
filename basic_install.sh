@@ -91,7 +91,7 @@ install_apps () {
       wine \
       smartgit \
       rocketchat-client \
-      insomnia \
+      #insomnia \
       nuvolaplayer \
       nuvola-app-spotify \
       tigervnc \
@@ -99,7 +99,9 @@ install_apps () {
       nodejs \
       npm \
       keepassxc \
-      gpaste
+      gpaste \
+      etcher \
+      teamviewer
 
   execution
 }
@@ -172,60 +174,8 @@ set_shortcuts () {
 
 ## Install additional gnome extensions
 install_gnome_extensions () {
-  echo ''
-  echo '####################################################'
-  echo '## Which extensions would you like me to install? ##'
-  echo '####################################################'
-  echo ''
-  echo '  1 -> caffeine'
-  echo '  2 -> media player indicator'
-  echo '  3 -> no top-left hot corner'
-  echo '  4 -> shutdown timer'
-  echo '  5 -> dim on battery'
-  echo '  6 -> do not disturb button'
-  echo '  7 -> todo.txt'
-  echo '  8 -> docker integration'
-  echo '  9 -> top icons plus'
-  echo ' 10 -> services systemd'
-  echo ' 11 -> shellshape'
-  echo ' 12 -> system monitor'
-  echo ' 13 -> extensions'
-  echo ' 14 -> sound input-output chooser'
-  echo ' 15 -> dash to dock'
-  echo ' 16 -> multi monitor add-on'
-  echo ' 17 -> jenkins ci indicator'
-  echo ''
 
-  read choices
-
-  list=$(echo $choices | tr " " "\n")
-  installerArgs="--yes --restart-shell"
-
-  for extension in $list
-  do
-    case $extension in
-      1) installerArgs="$installerArgs 517";;
-      2) installerArgs="$installerArgs 55";;
-      3) installerArgs="$installerArgs 118";;
-      4) installerArgs="$installerArgs 792";;
-      5) installerArgs="$installerArgs 947";;
-      6) installerArgs="$installerArgs 964";;
-      7) installerArgs="$installerArgs 570";;
-      8) installerArgs="$installerArgs 1055";;
-      9) installerArgs="$installerArgs 1031";;
-      10) installerArgs="$installerArgs 1034";;
-      11) installerArgs="$installerArgs 294";;
-      12) installerArgs="$installerArgs 1064";;
-      13) installerArgs="$installerArgs 1036";;
-      14) installerArgs="$installerArgs 906";;
-      15) installerArgs="$installerArgs 307";;
-      16) installerArgs="$installerArgs 921";;
-      17) installerArgs="$installerArgs 399";;
-      *) ;;
-    esac
-  done
-
-  gnome-shell-extension-installer $installerArgs
+  gnome-shell-extension-installer 55 118 947 964 1055 1031 1034 1064 1036 906 307 921 399 826 442
 
   execution
 }
