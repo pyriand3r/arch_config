@@ -67,8 +67,6 @@ install_apps () {
   echo '################################'
   echo ''
   yaourt -S --noconfirm \
-      networkmanager \
-      network-manager-applet \
       visual-studio-code \
       intellij-idea-ultimate-edition \
       solaar \
@@ -77,7 +75,6 @@ install_apps () {
       vim \
       zsh \
       firefox \
-      thunderbird \
       libreoffice-still \
       gimp \
       docker \
@@ -86,22 +83,18 @@ install_apps () {
       ttf-mononoki \
       gtk-theme-arc-git \
       papirus-icon-theme-git \
-      gnome-shell-extension-installer \
       openssh \
-      wine \
       smartgit \
-      rocketchat-client \
-      #insomnia \
-      nuvolaplayer \
-      nuvola-app-spotify \
-      tigervnc \
+      rocketchat-client-bin \
       flashplugin \
       nodejs \
       npm \
       keepassxc \
       gpaste \
       etcher \
-      teamviewer
+      teamviewer \
+      postman \
+      spotify \
 
   execution
 }
@@ -146,7 +139,6 @@ set_theming () {
   echo ''
   gsettings set org.gnome.desktop.wm.preferences button-layout 'close,maximize,minimize:'
   gconftool-2 --set /apps/metacity/general/button_layout --type string "close,maximize,minimize:"
-  gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com', 'alternate-tab@gnome-shell-extensions.gcampax.github.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']"
   gsettings set org.gnome.desktop.interface gtk-theme 'Arc'
   gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
   gsettings set org.gnome.desktop.wm.preferences theme 'Arc-Dark'
@@ -172,14 +164,6 @@ set_shortcuts () {
   execution
 }
 
-## Install additional gnome extensions
-install_gnome_extensions () {
-
-  gnome-shell-extension-installer 55 118 947 964 1055 1031 1034 1064 1036 906 307 921 399 826 442
-
-  execution
-}
-
 ## Perform a full install
 full_install () {
   system_update
@@ -188,8 +172,6 @@ full_install () {
   enable_modules
   install_OMZSH
   set_theming
-  set_shortcuts
-  install_gnome_extensions
 }
 
 ## Print choices and perform execution
