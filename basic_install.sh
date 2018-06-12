@@ -95,6 +95,15 @@ install_apps () {
       teamviewer \
       postman \
       spotify \
+      mailspring \
+      boostnote \
+      pencil \
+      flameshot \
+      gpick \
+      mongodb-compass \
+      rdesktop \
+      vmware-workstation \
+      tmsu
 
   execution
 }
