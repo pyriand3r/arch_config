@@ -23,6 +23,25 @@ alias shutdown='sudo /sbin/shutdown'
 # check battery stats
 alias batcheck="upower -i $(upower -e | grep 'BAT') | grep -E 'state|to\ full|percentage|capacity'"
 
+# use rsync to copy files for progress output
+cpr () {
+    rsync --info=progress2 $1 $2
+}
+
+##############
+#### TMSU ####
+##############
+
+# tag files
+tag () {
+    tmsu tag --tags $1 $2
+}
+
+# get tagged files
+
+alias tagged="tmsu files"
+
+
 #############
 #### GIT ####
 #############
@@ -46,9 +65,17 @@ gcob () {
     fi
 }
 
-alias gffs="git flow feature start";
-alias gf3="git flow feature finish";
-alias gffp="git flow feature publish";
+gsync () {
+    branch=$1
+    if [[ -z $1 ]]
+    then
+        branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+    fi
+  
+    git fetch upstream
+    git rebase upstream/${branch}
+}
+
 
 ################
 #### DOCKER ####
